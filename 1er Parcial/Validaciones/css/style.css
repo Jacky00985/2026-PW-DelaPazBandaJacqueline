@@ -2,6 +2,78 @@
     box-sizing:border-box
 }
 
+form.formulario-registro {
+    background-color: #f4f6f8;
+    border: 4px solid #3498db;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+input[type="text"] {
+  width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #333;
+    background-color: #e2caca;
+    border: 2px solid #dbb7b7;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+button {
+    background-color: #55a878;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #176939;
+    transform: translateY(-2px); 
+}
+
+input.invalido {
+    border: 2px solid #e74c3c;
+    background-color: #fde8e8;
+}
+
+
+span.error {
+    color: #e74c3c;
+    font-size: 12px;
+    display: none; 
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+span.error.mostrar {
+    display: block;
+}
+
+.mensaje-exito {
+    display: none;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.mensaje-exito.exitoso {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
 body{
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
