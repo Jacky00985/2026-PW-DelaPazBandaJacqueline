@@ -98,6 +98,7 @@ formArreglos.addEventListener('submit', (e) => {
             resultadoTexto = `<strong>filter + map (Cupo disponible):</strong> ${conCupoDisponibles.join(', ')}`;
             break;
 
+
         default:
             resultadoTexto = 'Selecciona una operación válida.';
     }

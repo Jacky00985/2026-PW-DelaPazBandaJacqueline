@@ -40,18 +40,33 @@
                         <option value="find">find - Buscar por el nombre del instructor</option>
                         <option value="reduce">reduce - Total de Inscritos</option>
                         <option value="encadenado">filter + map - Talleres con cupo disponible</option>
+                        <option value="JSON.stringify">stringify</option>
                     </select>
                 </div>
-
                 <button type="submit" >Ejecutar</button>
+                </form>
+                 <output class="resultado" id="resultado-arreglo" for="form-arreglo" ></output>
 
-            </form>
 
-            <output class="resultado" id="resultado-arreglo" for="form-arreglo" ></output>
-        </section>
+                 <form id="form-objetos" class="formulario" >
+                <div class="campos" >
+                <label for="operacion-objeto" name="operacion-objeto">Operación</label>
+                    <select name="operacion-objeto" id="operacion-objeto">                <option value="keys">Object.keys</option>
+                <option value="values">Object.values</option>
+                    <option value="entries">Object.entries</option>
+                    <option value="stringify">JSON.stringify</option>
+                    <option value="parse">JSON.parse</option>
+                    </select>
+                </div>
+                <button type="submit" >Ejecutar</button>
+                 </form>
+            <output class="resultado" id="resultado-objeto" for="form-objetos" ></output>     
+           </section>
         <a href="../../index.html" class="btnregresar">Volver al portafolio</a>
     </main>
 
     <script src="./js/01-arreglos.js" ></script>
+        <script src="./js/02-objetos-json.js" ></script>
+
 </body>
 </html>

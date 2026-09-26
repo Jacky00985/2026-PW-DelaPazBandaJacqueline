@@ -35,3 +35,56 @@ console.log('Ahora de JSON a Objeto')
 const objetoDeVuelta = JSON.parse(textoJson);
 console.log('tipo: ', typeof objetoDeVuelta);
 console.log(objetoDeVuelta.nombre);
+
+const formObjetos = document.getElementById('form-objetos'); // Asegúrate de que coincida con el ID de tu formulario en el HTML
+const selectOperacionObj = document.getElementById('operacion-objeto'); // El select con las opciones de objetos
+const outputResultadoObj = document.getElementById('resultado-objeto'); // El contenedor de resultados
+
+const tallerEscolar = {
+  nombre: 'Introducción a Python',
+  instructor: 'Ing. María López',
+  cupo: 25,
+  inscritos: 25,
+};
+
+formObjetos.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const operacionSeleccionada = selectOperacionObj.value;
+    let resultadoTexto = '';
+
+    switch (operacionSeleccionada) {
+        case 'keys':
+            const keys = Object.keys(tallerEscolar);
+            resultadoTexto = `<strong>Object.keys (Propiedades):</strong> ${keys.join(', ')}`;
+            break;
+
+        case 'values':
+            const values = Object.values(tallerEscolar);
+            resultadoTexto = `<strong>Object.values (Valores):</strong> ${values.join(', ')}`;
+            break;
+
+        case 'entries':
+            let listaEntries = [];
+            for (const [campo, valor] of Object.entries(tallerEscolar)) {
+                listaEntries.push(`- <strong>${campo}:</strong> ${valor}`);
+            }
+            resultadoTexto = `<strong>Object.entries (Campo y valor):</strong><br>` + listaEntries.join('<br>');
+            break;
+
+        case 'stringify':
+            const textoJson = JSON.stringify(tallerEscolar, null, 2);
+            resultadoTexto = `<strong>JSON.stringify (Tipo: ${typeof textoJson}):</strong><pre>${textoJson}</pre>`;
+            break;
+
+        case 'parse':
+            const jsonString = JSON.stringify(tallerEscolar, null, 2);
+            const objetoDeVuelta = JSON.parse(jsonString);
+            resultadoTexto = `<strong>JSON.parse (Tipo: ${typeof objetoDeVuelta}):</strong> Objeto recuperado exitosamente. Propiedad nombre: "${objetoDeVuelta.nombre}"`;
+            break;
+
+        default:
+            resultadoTexto = 'Selecciona una operación válida.';
+    }
+
+    outputResultadoObj.innerHTML = resultadoTexto;
+});
