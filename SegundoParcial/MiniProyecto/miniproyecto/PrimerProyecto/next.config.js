@@ -1,15 +1,18 @@
-const MINI_SERVIDOR_URL = 'http://localhist:3000';
+const { sources } = require("next/dist/compiled/webpack/webpack");
+ 
+const MINI_SERVIDOR_URL = 'http://localhost:3000';
 const BACKEND_URL = 'http://localhost:3306';
-
-/** @type{import('next').NextConfi} */
-module,exports = {
-    reeactStricMode : true,
+ 
+/** @type {import { 'next' }.NextConfig} */
+ 
+module.exports = {
+    reactStrictMode : true,
     async rewrites(){
         return[
-            {source: '/mini/:path*', destination:
-                `{MINI_SERVIDOR_URL}/:path*`},
-                { source: `/api/:path*`, destination:}
-                `{BACKEMD_URL}/api/:path*`}
-            ];
-        },
-    };
+            {source : '/mini/:path', destination: `${MINI_SERVIDOR_URL}/:path*`},
+            {source : '/api/:path*', destination: `${BACKEND_URL}/api/:path*`}
+ 
+        ];
+    },
+}
+ 
