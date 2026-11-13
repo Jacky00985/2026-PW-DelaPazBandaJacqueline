@@ -178,6 +178,37 @@ app.get('/api/perfil', requiereSesion, (req, res)=>{
 });
 
 
+ //Vamos a Hace una Prueba Unitaria para VERIFICAR con true o false las pruebas ejecutadas//
 
+    app.get('/api/diagnostico/sesiones', async(req,res,next)=>{
+        
+        try{
+            const sesiones = await todasLasSesiones(almacen);
+            const lista = Object.entries(sesiones || {}).map(({id, s})=>({
+                sesion: idCorto(id),
+                esLaTuya: id === req.sessionID,
+                usuario: s.usuario ? s.usuario.usuario : 'Sin inicar sesion',
+                visitas: s.visitas || 0,
+                expira: s.cookie && s.cookie.expires,
 
+            }))
+            res.json({almacen: config.almacen, sesiones: lista});
+
+        }catch(error){
+            next(error);
+        }
+    });
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    app.use((error,req,res,next) =>{
+        console.error(error);
+        res.status(500).json({error: 'Error del servidor'})
+    })
+
+    app.use('/api', (req,res) => (res.status(404).json({ error: 'Ruta no encontrada'})));
+    
+    return app;
 }
+
+module.exports = {crearApp, NOMBRE_COOKIE};
